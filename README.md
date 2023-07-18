@@ -26,18 +26,25 @@ No installation is required. Scripts are short and designed to be adapted. Pytho
 
 All python scripts import the -dat.xlsx generated when performing "Extract" within Blob3D. Python scripts use the heading names automatically generated. For studying orientation, shape, and shape factors a primitive ellipsoid will need to be fitted (and the equation reported) to ensure the correct coefficients. 
 
-### _fractual_plot.py
+Expected output figures from each script are shown, using the example dataset `example/example_blob3d_spreadsheet.xlsx`
+
+#### _fractual_plot.py
 
 Creates a log-log cumulative plot of the number of clasts with a diameter **d** and greater **N(>d)** against that clast diameter **d**. Values annotating linear fits are the fractal dimension '*D-value*'.
 
-### _clastshape_zingg_plot.py
+![plot _fractual_plot](https://github.com/ag00dwin/Blob3D_fractsed/blob/main/example/_ouput/plot%20_fractual_plot.png "_fractual_plot.py output")
+
+
+#### _clastshape_zingg_plot.py
 
 Creates a Zingg (1935) diagram that shows the relative dimensions of the long (L), short (S), and
 intermediate (I) axes of a particle. 
 
 Reference: Zingg, T. (1935). Beitrag zur schotteranalyse. ETH Zurich.
 
-### _shape_factor_plot.py
+![plot _clastshape_zingg_plot](https://github.com/ag00dwin/Blob3D_fractsed/blob/main/example/_ouput/plot%20_clastshape_zingg_plot.png "_clastshape_zingg_plot.py output")
+
+#### _shape_factor_plot.py
 
 Creates a plot of the **shape factor** as defined by Wilson and Huang (1979) against clast diameter **d**
 
@@ -45,6 +52,10 @@ Shape factor is defined as `(ShapeB+ShapeC)/2*ShapeA`
 
 Reference: Wilson, L., & Huang, T. C. (1979). The influence of shape on the atmospheric settling velocity of volcanic ash particles. Earth and Planetary Science Letters, 44(2), 311–324. https://doi.org/https://doi.org/10.1016/0012-821X(79)90179-1
 
-### _steronetplot.py
+![plot _shape_factor_plot](https://github.com/ag00dwin/Blob3D_fractsed/blob/main/example/_ouput/plot%20_shape_factor_plot.png "_shape_factor_plot.py output")
+
+#### _steronetplot.py
 
 Creates a stereonet of orientation based on sphericity and minimum clast diameter. Simply plots using [mplstereonet] (https://pypi.org/project/mplstereonet/) for the parameters imported from the -dat.xlsx file. More imformation on [mplstereonet] (https://pypi.org/project/mplstereonet/) can be found [here](https://mplstereonet.readthedocs.io/en/latest/mplstereonet.html)
+
+![plot _steronetplot](https://github.com/ag00dwin/Blob3D_fractsed/blob/main/example/_ouput/plot%20_stereonetplot.png "_steronetplot.py output")
