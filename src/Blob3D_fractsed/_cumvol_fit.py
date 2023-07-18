@@ -1,7 +1,7 @@
 '''
-MODULE: CUMULATIVE VOLUME FRACTION 
+CUMULATIVE VOLUME FRACTION FIT
 
-plots the cumulative volume fraction plot against grainsize within 
+plots the cumulative volume fraction against grainsize within 
 a defined range and with a defined bin size. 
     - fits a cumulative Rosin-Rammler distribution function 
     - fits a cumulative Generalised Gamma distribution function
@@ -22,23 +22,24 @@ prerequisites
 
 input
 -----
-    ''_df is a pandas dataframe converted from imported Blob3D excel output''
-    ''_df_2 is a pandas dataframe converted from imported Blob3D excel output''
+    ''_df'' is a pandas dataframe converted from imported Blob3D excel output
+    ''_df_2'' is a pandas dataframe converted from imported Blob3D excel output
         (1) setting _df_2 == None 
             - this will run the module with just one dataframe as normal
         (2) setting _df_2 == Blob3D excel pandas dataframe 
             - this will try to combine the dataframes using the threshold values, atumatoically assuming 
               everything from the first dataframe '_df' is above the threshold and the second dataframe 
-              '_df_2' is from below the threshold. 
-                ''threshold'' defines the valued explained above
-                ''c_min'' and ''c_max'' define a window to compare the two dataframes. Over this overlap, 
+              '_df_2' is from below the threshold. Allows for combining two datasets at different resolutions 
+                (i) ''threshold'' defines the value explained above
+                (ii) ''c_min'' and ''c_max'' define a window to compare the two dataframes. Within this overlap, 
                 '_df_2' will be modified by a multiplication factor so that it contains the same number of 
                 clasts present in the same window in '_df'. Ideally 'threshold' will lie between 'c_min'
-                and 'c_max'   
+                and 'c_max'. Having this multiplication factor means datasets of overlaping resolutions but
+                different sample size can be combined. 
 
 output
 -----
-    umulative volume fraction plot against (log) grain diameter
+    cumulative volume fraction plot against (log) grain diameter
 
 '''
 
@@ -53,9 +54,6 @@ def cumvol_fit(_df,_df_2,c_min,c_max,threshold):
 
     import matplotlib.pyplot as plt
 
-    #import warnings
-    #warnings.filterwarnings("ignore")
-
     def clastsieve(D,V, _min, _max, step):
 
         '''
@@ -67,6 +65,10 @@ def cumvol_fit(_df,_df_2,c_min,c_max,threshold):
         _min is min clast size to sort 
         _max is max clast size to sort 
         step is the bin width between the _min and _max values
+
+        outputs array of length dependant on bin width:
+            freq_vol, sum_vol, grainsizes, bins
+
         '''
 
         import numpy as np
@@ -77,11 +79,11 @@ def cumvol_fit(_df,_df_2,c_min,c_max,threshold):
     
         # store output in array
         _totals_ = np.zeros((3,int(len(bins))))
-        # rows
-        # 0 = mass 
-        # 1 = number
-        # 2 = list of all sizes
-        # 3 = bin names
+        # rows: 
+            # 0 = mass 
+            # 1 = number
+            # 2 = list of all sizes
+            # 3 = bin names
 
         # itterate over clasts and sort
         for index, value in enumerate(D): 
@@ -104,6 +106,7 @@ def cumvol_fit(_df,_df_2,c_min,c_max,threshold):
         bins       = _totals_[3,:]
 
         return freq_vol, sum_vol, grainsizes, bins
+    
     def normalize(data):
         return (data - np.min(data)) / (np.max(data) - np.min(data))
 
@@ -140,8 +143,7 @@ def cumvol_fit(_df,_df_2,c_min,c_max,threshold):
         overlap_comp_value = 0
         for index, value in enumerate(r_2): 
             if c_min < value <=c_max:
-                overlap_comp_value = overlap_comp_value+1  
-        # print(overlap_comp_value)
+                overlap_comp_value = overlap_comp_value + 1  
         ratio = overlap_comp_value / overlap_value
         print('ratio= '+str(ratio))
 
@@ -156,7 +158,7 @@ def cumvol_fit(_df,_df_2,c_min,c_max,threshold):
         vol = vol*ratio
         num = num*ratio
 
-        # omcbine arrays
+        # combine arrays
         vol = np.add(vol, vol_2)
         num = np.add(num, num_2)
 
@@ -184,8 +186,7 @@ def cumvol_fit(_df,_df_2,c_min,c_max,threshold):
     k = popt[1]
 
     SSE_rosin    = np.sum((rosin(Rx,n,k) - Ry)**2)
-    mean_rosin = n*gamma(1+(1/k)) #median k*(np.log(2)**(1/n))
-    var_rosin    = (n**2)*((scipy.special.gamma(1+(2/k), out=None)-(scipy.special.gamma(1+(1/k), out=None)**2))**2) 
+    mean_rosin = n*gamma(1+(1/k))
 
     print('rosin',SSE_rosin,n,k,mean_rosin)
 
@@ -204,7 +205,6 @@ def cumvol_fit(_df,_df_2,c_min,c_max,threshold):
 
     SSE_ggamma    = np.sum((ggamma(Rx,p,a,c) - Ry)**2)
     mean_ggamma = a*((gamma((c+1)/p))/(gamma(c/p)))
-    var_ggamma    = gengamma.var(a, c, loc=0, scale=1)
 
     print('ggamma',SSE_ggamma,c,p,mean_ggamma, 'a=',a)
     
@@ -215,13 +215,11 @@ def cumvol_fit(_df,_df_2,c_min,c_max,threshold):
     plt.plot(Rx,rosin(Rx,n,k),
                     label=' Rosin',
                     color='green',
-                    #linestyle='dashed'
                     zorder=1,
                                         )
     plt.plot(Rx,ggamma(Rx,p,a,c),
                     label=' Generalised Gamma',
                     color='red',
-                    #linestyle='dashed'
                     zorder=1,
                                         )
 
@@ -236,7 +234,7 @@ def cumvol_fit(_df,_df_2,c_min,c_max,threshold):
     plt.ylabel('Cumulative volume fraction')
 
     plt.legend()
-    plt.show()
+    plt.show(block=True)
 
     return None
 

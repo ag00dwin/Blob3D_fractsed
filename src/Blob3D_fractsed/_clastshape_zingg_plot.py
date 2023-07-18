@@ -1,7 +1,7 @@
 '''
-MODULE: GRAINSHAPE [ ZINGG]
+CLASTSHAPE [ZINGG] PLOT
 
-plots zingg  (1935) diagram that shows the relative dimensions of the long, short, and
+plots a Zingg (1935) diagram that shows the relative dimensions of the long, short, and
 intermediate axes of a particle
 
 prerequisites
@@ -14,7 +14,7 @@ prerequisites
 
 input
 -----
-    ''_df is a pandas dataframe converted from imported Blob3D excel output''
+    ''_df'' is a pandas dataframe converted from imported Blob3D excel output
     ''min_size'' is the a threshold of smallest size included in the plot
 
 output
@@ -45,7 +45,7 @@ def zingg_diagram(_df,min_size):
     df_shape = pd.DataFrame.from_dict(np.array([_x,_y]).T)
     df_shape.columns = ['X','Y']
 
-    # print length of arrays
+    # set number of clasts
     number_grains = len(A_)
 
     # calculate ratios for the zinng diagram
@@ -79,8 +79,6 @@ def zingg_diagram(_df,min_size):
 
     # figure settings
     plt.tight_layout()
-    #figManager = plt.get_current_fig_manager()
-    #figManager.window.showMaximized()
     plt.show(block=True)
 
     return None

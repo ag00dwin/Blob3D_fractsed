@@ -1,5 +1,5 @@
 '''
-MODULE: STEREONET
+STEREONET OF ORIENTATIONS
 
 plots a stereonet of orientation based on sphericity and minimum clast diameter
     
@@ -13,7 +13,7 @@ prerequisites
 
 input
 -----
-    ''_df is a pandas dataframe converted from imported Blob3D excel output''
+    ''_df'' is a pandas dataframe converted from imported Blob3D excel output
     ''st'' is the maximum clast sphericity that is plotted
     ''min_size'' is the minimum clast diameter that is plotted
 output
@@ -36,9 +36,9 @@ def stereonetplot(_df,st,min_size):
 
         for index, value in enumerate(L):
             
-            _L = L[index] #* np.sign(N[index])
-            _M = M[index] #* np.sign(N[index])
-            _N = N[index] #* np.sign(N[index])
+            _L = L[index]
+            _M = M[index]
+            _N = N[index]
 
             plunge = np.rad2deg(-np.arcsin(_N))
             trend = np.rad2deg(np.arccos(_L/np.cos(np.arcsin(_N))))
@@ -62,7 +62,7 @@ def stereonetplot(_df,st,min_size):
     # threshold based on minimum clast size and maximum sphericity
     _df = _df[(_df['Side contact']==0) & (_df['Sphericity']<st) & (_df['ShapeC (mm)']>=min_size)]
 
-    # exstract components
+    # extract components
     Xl = _df['PEllipsoid X1 (dmls)'].values
     Xm = _df['PEllipsoid X2 (dmls)'].values
     Xn = _df['PEllipsoid X3 (dmls)'].values
@@ -82,6 +82,7 @@ def stereonetplot(_df,st,min_size):
     ax.grid()
     ax.pole(plunge_process(Xl,Xm,Xn)[0]+90,90+plunge_process(Xl,Xm,Xn)[1],'x',color='black')
     ax.density_contourf(plunge_process(Xl,Xm,Xn)[0]+90,90+plunge_process(Xl,Xm,Xn)[1], measurement='poles', cmap='Blues')
-    plt.show()
+
+    plt.show(block=True)
 
     return None

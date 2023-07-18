@@ -1,5 +1,5 @@
 '''
-MODULE: FRACTUAL PLOT
+FRACTUAL PLOT
 
 Log-log cumulative plot of the number of clasts with a diameter d and greater [N(>d)] 
 against that clast diameter [d]. Values annotating linear fits are the fractal 
@@ -12,11 +12,11 @@ prerequisites
 
 input
 -----
-    ''_df is a pandas dataframe converted from imported Blob3D excel output''
+    ''_df'' is a pandas dataframe converted from imported Blob3D excel output
 
 output
 -----
-    plot with best-fit of linear gradient denoting the fractal dimension
+    Log-log cumulative plot with best-fit of linear gradient denoting the fractal dimension
 
 '''
 
@@ -25,17 +25,20 @@ def fractal_plot(_df):
     import numpy as np
     import matplotlib.pyplot as plt
 
-    def clastsieve(D,V, _min, _max, step):
+    def clastsieve(D, V, _min, _max, step):
 
         '''
         clast 'sieve'
 
-        D is a np.array of grain diameters
-        V is a np.array of grain volumes
+        D is a np.array of clast diameters
+        V is a np.array of clast volumes
 
         _min is min clast size to sort 
         _max is max clast size to sort 
         step is the bin width between the _min and _max values
+
+        outputs array of length dependant on bin width:
+            freq_vol, sum_vol, clastsizes, bins
         '''
 
         import numpy as np
@@ -46,11 +49,11 @@ def fractal_plot(_df):
     
         # store output in array
         _totals_ = np.zeros((3,int(len(bins))))
-        # rows
-        # 0 = mass 
-        # 1 = number
-        # 2 = list of all sizes
-        # 3 = bin names
+        # rows: 
+            # 0 = mass 
+            # 1 = number
+            # 2 = list of all sizes
+            # 3 = bin names
 
         # itterate over clasts and sort
         for index, value in enumerate(D): 
@@ -140,7 +143,7 @@ def fractal_plot(_df):
     # define plot
     plot_x = np.log10(bins)
     plot_y = np.where(cum != 0, np.log10(cum), 0)
-    #plot
+    # plot
     fig, ax = plt.subplots()
     ax.scatter(plot_x,plot_y)
     ax.set(xlabel='log r', ylabel='log N(>R)')
@@ -150,7 +153,7 @@ def fractal_plot(_df):
     ax.plot(fractal_dimension(_df,-1,0)[0],fractal_dimension(_df,-1,0)[1],color='red')
     ax.annotate(fractal_dimension(_df,-1,0)[4], xy=(fractal_dimension(_df,-1,0)[2]+0.02, fractal_dimension(_df,-1,0)[3]), fontsize=6)
     
-    plt.show()
+    plt.show(block=True)
 
     return None
 
