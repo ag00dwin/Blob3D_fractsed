@@ -32,8 +32,7 @@ Expected output figures from each script are shown, using the example dataset `e
 
 Creates a log-log cumulative plot of the number of clasts with a diameter **d** and greater **N(>d)** against that clast diameter **d**. Values annotating linear fits are the fractal dimension '*D-value*'.
 
-![plot _fractual_plot](https://github.com/ag00dwin/Blob3D_fractsed/blob/main/example/_ouput/plot%20_fractual_plot.png "_fractual_plot.py output")
-
+<img src="https://github.com/ag00dwin/Blob3D_fractsed/blob/main/example/_ouput/plot%20_fractual_plot.png" width="200">
 
 #### _clastshape_zingg_plot.py
 
@@ -42,7 +41,7 @@ intermediate (I) axes of a particle.
 
 Reference: Zingg, T. (1935). Beitrag zur schotteranalyse. ETH Zurich.
 
-![plot _clastshape_zingg_plot](https://github.com/ag00dwin/Blob3D_fractsed/blob/main/example/_ouput/plot%20_clastshape_zingg_plot.png "_clastshape_zingg_plot.py output")
+<img src="https://github.com/ag00dwin/Blob3D_fractsed/blob/main/example/_ouput/plot%20_clastshape_zingg_plot.png" width="200">
 
 #### _shape_factor_plot.py
 
@@ -52,10 +51,10 @@ Shape factor is defined as `(ShapeB+ShapeC)/2*ShapeA`
 
 Reference: Wilson, L., & Huang, T. C. (1979). The influence of shape on the atmospheric settling velocity of volcanic ash particles. Earth and Planetary Science Letters, 44(2), 311–324. https://doi.org/https://doi.org/10.1016/0012-821X(79)90179-1
 
-![plot _shape_factor_plot](https://github.com/ag00dwin/Blob3D_fractsed/blob/main/example/_ouput/plot%20_shape_factor_plot.png "_shape_factor_plot.py output")
+<img src="https://github.com/ag00dwin/Blob3D_fractsed/blob/main/example/_ouput/plot%20_shape_factor_plot.png" width="200">
 
 #### _steronetplot.py
 
 Creates a stereonet of orientation based on sphericity and minimum clast diameter. Simply plots using [mplstereonet] (https://pypi.org/project/mplstereonet/) for the parameters imported from the -dat.xlsx file. More imformation on [mplstereonet] (https://pypi.org/project/mplstereonet/) can be found [here](https://mplstereonet.readthedocs.io/en/latest/mplstereonet.html)
 
-![plot _steronetplot](https://github.com/ag00dwin/Blob3D_fractsed/blob/main/example/_ouput/plot%20_stereonetplot.png "_steronetplot.py output")
+<img src="https://github.com/ag00dwin/Blob3D_fractsed/blob/main/example/_ouput/plot%20_stereonetplot.png" width="200">
