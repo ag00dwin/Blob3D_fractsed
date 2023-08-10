@@ -1,10 +1,10 @@
 # Blob3D_fractsed
 
-This repository contains scripts with code useful for processing of Blob3D output -dat.xlsx files. This code is useful for sedimentological applications, using shape parameters to create clastsize distribution histograms and for statistically assessing clast spatial orientation.  
+This repository contains scripts for processing Blob3D output -dat.xlsx files. This code may be useful for sedimentological applications including assessing shape parameters, creating clastsize distribution histograms, and for statistically assessing spatial orientation.  
 
 ## Referencing
 
-For use of this code, please cite: Goodwin A., Tartèse R., Garwood R., and Almeida N. V. (2023) A 3D Petrofabric Examination of Martian Breccia NWA 11220 via X-ray Computed Microtomography: Evidence for an Impact Lithology. Journal of Geophysical Research: Planets. *In review.*
+If using this code, please cite: Goodwin A., Tartèse R., Garwood R., and Almeida N. V. (2023) A 3D Petrofabric Examination of Martian Breccia NWA 11220 via X-ray Computed Microtomography: Evidence for an Impact Lithology. Journal of Geophysical Research: Planets. *In review.*
 
 Doi and further information will be added upon publication 
 
@@ -20,13 +20,13 @@ The project is licensed under the GNU-v3 license.
 
 ## Installation
 
-No installation is required. Scripts are short and designed to be adapted. Python scripts can be downloaded from this repository and either imported as modules locally, copied into scripts and run as defined functions, or intergrating into pre-existing scripts where such functionality is required.
+No installation is required. Scripts are short and designed to be adapted and applied to various problems. Python scripts can be downloaded from this repository and either imported as modules locally, copied into scripts and run as defined functions, or intergrating into pre-existing scripts where such functionality is required.
 
 ## Python Scrips
 
-All python scripts import the -dat.xlsx generated when performing "Extract" within Blob3D. Python scripts use the heading names automatically generated. For studying orientation, shape, and shape factors a primitive ellipsoid will need to be fitted (and the equation reported) to ensure the correct coefficients. 
+All python scripts import the -dat.xlsx generated when performing "Extract" within Blob3D. Python scripts use the heading names automatically generated in the exported file. For studying orientation, shape, and shape factors a primitive ellipsoid will need to be fitted (and the equation reported) to ensure the correct coefficients. See the Blob3D user guide for details. 
 
-Expected output figures from each script are shown, using the example dataset `example/example_blob3d_spreadsheet.xlsx`
+Expected output figures from each script are provided, using the example dataset `example/example_blob3d_spreadsheet.xlsx`
 
 #### _fractual_plot.py
 
@@ -55,6 +55,6 @@ Reference: Wilson, L., & Huang, T. C. (1979). The influence of shape on the atmo
 
 #### _steronetplot.py
 
-Creates a stereonet of orientation based on sphericity and minimum clast diameter. Simply plots using [mplstereonet] (https://pypi.org/project/mplstereonet/) for the parameters imported from the -dat.xlsx file. More imformation on [mplstereonet] (https://pypi.org/project/mplstereonet/) can be found [here](https://mplstereonet.readthedocs.io/en/latest/mplstereonet.html)
+Creates a stereonet of orientation based on sphericity and minimum clast diameter. Plots using [mplstereonet] (https://pypi.org/project/mplstereonet/) for the parameters imported from the -dat.xlsx file. More imformation on [mplstereonet] (https://pypi.org/project/mplstereonet/) can be found [here](https://mplstereonet.readthedocs.io/en/latest/mplstereonet.html)
 
 <img src="https://github.com/ag00dwin/Blob3D_fractsed/blob/main/example/_ouput/plot%20_stereonetplot.png" width="200">
