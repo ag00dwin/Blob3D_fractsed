@@ -4,11 +4,9 @@ This repository contains scripts for processing Blob3D output -dat.xlsx files. T
 
 ## Referencing
 
-If using this code, please cite: Goodwin A., Tartèse R., Garwood R., and Almeida N. V. (2023) A 3D Petrofabric Examination of Martian Breccia NWA 11220 via X-ray Computed Microtomography: Evidence for an Impact Lithology. Journal of Geophysical Research: Planets. *In review.*
+If using this code, please reference: Goodwin, A., Tartèse, R., Garwood, R. J., & Almeida, N. V. (2023). A 3D petrofabric examination of Martian breccia NWA 11220 via X-ray computed microtomography: Evidence for an impact lithology. Journal of Geophysical Research: Planets, 128, e2023JE007916. [https://doi.org/10.1029/2023JE007916](https://doi.org/10.1029/2023JE007916) 
 
-Doi and further information will be added upon publication 
-
-This code uses the output from free software known as [Blob3D](https://www.ctlab.geo.utexas.edu/software/blob3d/) which should be referenced as: Ketcham, R. A. (2005). Computational methods for quantitative analysis of three-dimensional features in geological specimens. Geosphere, 1(1), 32–41. https://doi.org/10.1130/GES00001.1 
+This code uses the output from free software known as [Blob3D](https://www.ctlab.geo.utexas.edu/software/blob3d/) which should be referenced as: Ketcham, R. A. (2005). Computational methods for quantitative analysis of three-dimensional features in geological specimens. Geosphere, 1(1), 32–41. [https://doi.org/10.1130/GES00001.1](https://doi.org/10.1130/GES00001.1) 
 
 Blob3D can be downloaded from: [HERE](https://www.ctlab.geo.utexas.edu/software/blob3d/)
 
@@ -55,6 +53,6 @@ Reference: Wilson, L., & Huang, T. C. (1979). The influence of shape on the atmo
 
 #### _steronetplot.py
 
-Creates a stereonet of orientation based on sphericity and minimum clast diameter. Plots using [mplstereonet] (https://pypi.org/project/mplstereonet/) for the parameters imported from the -dat.xlsx file. More imformation on [mplstereonet] (https://pypi.org/project/mplstereonet/) can be found [here](https://mplstereonet.readthedocs.io/en/latest/mplstereonet.html)
+Creates a stereonet of orientation based on sphericity and minimum clast diameter. Plots using [mplstereonet](https://pypi.org/project/mplstereonet/) for the parameters imported from the -dat.xlsx file. More imformation on [mplstereonet](https://pypi.org/project/mplstereonet/) can be found [here](https://mplstereonet.readthedocs.io/en/latest/mplstereonet.html)
 
 <img src="https://github.com/ag00dwin/Blob3D_fractsed/blob/main/example/_ouput/plot%20_stereonetplot.png" width="200">
