@@ -20,7 +20,7 @@ The project is licensed under the GNU-v3 license.
 
 No installation is required. Scripts are short and designed to be adapted and applied to various problems. Python scripts can be downloaded from this repository and either imported as modules locally, copied into scripts and run as defined functions, or intergrating into pre-existing scripts where such functionality is required.
 
-## Python Scrips
+## Python Scripts
 
 All python scripts import the -dat.xlsx generated when performing "Extract" within Blob3D. Python scripts use the heading names automatically generated in the exported file. For studying orientation, shape, and shape factors a primitive ellipsoid will need to be fitted (and the equation reported) to ensure the correct coefficients. See the Blob3D user guide for details. 
 
